@@ -5,9 +5,11 @@ public class Main {
 
 	private static int nPoints, radius, nInside;
 	private static float approxPi;
+	private static long start, end;
 	
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
+		start = System.currentTimeMillis();
 		nPoints = 0;
 		nInside = 0;
 		radius = 1;
@@ -18,20 +20,26 @@ public class Main {
 		String line = in.nextLine();
 		String[] vLine = line.split(" ");
 		
-		switch(vLine[0]) {
-			case "approxPi":
-				nPoints = Integer.parseInt(vLine[1]);
-				monteCarlo();
-			break;
-			case "time":
-				nPoints = Integer.parseInt(vLine[2]);
-				monteCarlo();
-				timeStats();
-			break;
-			default:
-				System.out.println("Comando inválido!");
-			break;
+		while(!line.equals("")) {
+			switch(vLine[0]) {
+				case "approxPi":
+					nPoints = Integer.parseInt(vLine[1]);
+					monteCarlo();
+				break;
+				case "time":
+					nPoints = Integer.parseInt(vLine[2]);
+					monteCarlo();
+					timeStats();
+				break;
+				default:
+					System.out.println("Comando inválido!");
+				break;
+			}
+			line = "";
+			//line = in.nextLine();
+			//vLine = line.split(" ");
 		}
+		
 	}
 
 	private static void monteCarlo() {
@@ -58,6 +66,13 @@ public class Main {
 
 	private static void timeStats() {
 		//todo
+		end = System.currentTimeMillis();
+		long total = end - start;
+		double seconds = (double)total/1000;
+		System.out.println();
+		System.out.println("real " + (int)seconds/60 +"m" + seconds + "s");
+		System.out.println("user ");
+		System.out.println("sys ");
 	}
 
 
