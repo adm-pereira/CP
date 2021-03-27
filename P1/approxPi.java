@@ -1,6 +1,3 @@
-import java.io.*;
-import java.util.Scanner;
-
 public class approxPi {
 
 	private static int nPoints, radius, nInside;
@@ -10,7 +7,6 @@ public class approxPi {
 		nPoints = Integer.parseInt(args[0]);
 		nInside = 0;
 		radius = 1;
-		//console(in);
 		monteCarlo();
 	}
 
